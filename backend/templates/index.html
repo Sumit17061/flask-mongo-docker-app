@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Flask + MongoDB Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Submit your data</h1>
+
+  {% with messages = get_flashed_messages(category_filter=["error"]) %}
+    {% if messages %}
+      <div class="error">
+        {% for m in messages %}
+          <p>{{ m }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <form method="post" action="/">
+    <label>Name</label><br>
+    <input type="text" name="name" /><br><br>
+
+    <label>Email</label><br>
+    <input type="email" name="email" /><br><br>
+
+    <label>Message</label><br>
+    <textarea name="message"></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p>Test the API at <a href="/api" target="_blank">/api</a></p>
+</body>
+</html>
+
